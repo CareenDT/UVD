@@ -1,0 +1,74 @@
+
+<!DOCTYPE HTML>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ITWORKS"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+</head>
+<body style="background-color: #0d1117;">
+    <main class="markdown-body">
+        <h1>UVD (или декларация диалогов)</h1>
+<p>Документация синтаксиса для написания диалогов[demo]</p>
+<h1>Основы</h1>
+<blockquote>
+<p>Каждая реплика должна начинаться с #</p>
+</blockquote>
+<pre><code class="language-uvd"># блаблабла
+# никита дурак
+///
+# Илья жирный
+</code></pre>
+<p>/// - нужен для ожидания нажатия кнопки продолжения</p>
+<blockquote>
+<p>Если реплики написаны как выше, то она произноситься никем.
+(ну или нарратором|внутренним голосом и тд.)</p>
+</blockquote>
+<p>Чтобы дать авторство персонажу, добавьте [c N] N=имя перса после #</p>
+<pre><code class="language-uvd"># [c isha] что-то не остроумное
+# что-то остроумное*
+# [c eugene] что-то ещё более остроумное
+</code></pre>
+<p>*Каждую новую реплику пеосонаж сбрасывается</p>
+<h1>Контроль</h1>
+<p>Паузы</p>
+<blockquote>
+<p>Для "паузы в речи" можно добавить [wait N] N=число
+!можно писать десятичные через точку (1.5)!</p>
+</blockquote>
+<pre><code class="language-uvd"># Текст [wait 1.5] после паузы
+</code></pre>
+<p>Скорость</p>
+<blockquote>
+<p>Чтобы изменить скорость ввода можно написать [spd N] N=символы в секунду</p>
+</blockquote>
+<pre><code class="language-uvd"># Нормальный текст в 0.1 [wait 1] [spd 1] капец какой медленный текст
+</code></pre>
+<p>!Скорость сбрасывается в начале каждой реплики</p>
+<p>Стилизация(ограниченно)</p>
+<p>У нас есть типы диалог. окна[dialog box] (пока нет bruh)
+Стили:
+- Стилей нет но вы держитесь</p>
+<p>Чтобы задать стиль dialog box-а нужно написать (ОБЯЗАТЕЛЬНО)ВНАЧАЛЕ после # [style N] N=название стиля из верхнего списка.</p>
+<pre><code class="language-uvd"># нормальный текст
+# [style flashback] [c eugene] флешбек и вещает Юджин
+</code></pre>
+<h2>Блоки (ветвление)</h2>
+<pre><code class="language-uvd">// Вступительная сцена
+# block intro
+    ...
+    [choice] Куда?|На работу-&gt;work;Домой-&gt;home;Остаться-&gt;stay
+
+# block work
+    ...
+    -&gt; home
+
+# block home
+    ...
+    ///
+
+# block stay
+    ...
+    -&gt; intro
+</code></pre>
+    </main>
+</body>
